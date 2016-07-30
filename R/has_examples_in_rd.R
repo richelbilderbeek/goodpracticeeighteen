@@ -3,8 +3,9 @@
 #' @return TRUE or FALSE
 #' @examples
 #'   filename <- paste0(getwd(), "/man/has_examples_in_rd.Rd")
-#'   testit::assert(file.exists(filename))
-#'   testit::assert(has_examples_in_rd(filename))
+#'   if (file.exists(filename)) {
+#'     testit::assert(has_examples_in_rd(filename))
+#'   }
 #' @export
 #' @author Richel Bilderbeek
 has_examples_in_rd <- function(rd_filename) {

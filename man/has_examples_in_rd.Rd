@@ -17,8 +17,9 @@ Checks if an R documentation file supplies one or more examples
 }
 \examples{
   filename <- paste0(getwd(), "/man/has_examples_in_rd.Rd")
-  testit::assert(file.exists(filename))
-  testit::assert(has_examples_in_rd(filename))
+  if (file.exists(filename)) {
+    testit::assert(has_examples_in_rd(filename))
+  }
 }
 \author{
 Richel Bilderbeek
