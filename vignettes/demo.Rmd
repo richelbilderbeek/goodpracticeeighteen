@@ -13,7 +13,7 @@ Here we parse the file:
 
 ```{r}
 # function with examples filename
-fwef <- "~/GitHubs/Cer2016/man/add_alignments.Rd"
+fwef <- paste0(getwd(), "/../man/has_examples_in_rd.Rd")
 testit::assert(file.exists(fwef))
 doc <- tools::parse_Rd(fwef)
 testit::assert(class(doc) == "Rd")
