@@ -1,0 +1,33 @@
+---
+title: "goodpractice #18 demo"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{goodpractice #18 demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Here we parse the file:
+
+```{r}
+# function with examples filename
+fwef <- "~/GitHubs/Cer2016/man/add_alignments.Rd"
+testit::assert(file.exists(fwef))
+doc <- tools::parse_Rd(fwef)
+testit::assert(class(doc) == "Rd")
+```
+
+We can see if there is a tag callde `examples`:
+
+```{r}
+tags <- tools:::RdTags(doc)
+print("\\examples" %in% tags)
+```
+
+And we can extract the length of the `examples` section:
+
+```{r}
+print(length(doc[[which(tags == "\\examples")]]))
+```
