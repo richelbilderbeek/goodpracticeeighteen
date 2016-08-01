@@ -11,7 +11,7 @@
 
 <meta name="author" content="Richel Bilderbeek" />
 
-<meta name="date" content="2016-07-30" />
+<meta name="date" content="2016-08-01" />
 
 <title>goodpractice #18 demo</title>
 
@@ -70,24 +70,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title">goodpractice #18 demo</h1>
 <h4 class="author"><em>Richel Bilderbeek</em></h4>
-<h4 class="date"><em>2016-07-30</em></h4>
+<h4 class="date"><em>2016-08-01</em></h4>
 
 </div>
 
 
 <p>Here we parse the file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function with examples filename</span>
-fwef &lt;-<span class="st"> &quot;~/GitHubs/Cer2016/man/add_alignments.Rd&quot;</span>
-testit::<span class="kw">assert</span>(<span class="kw">file.exists</span>(fwef))
-doc &lt;-<span class="st"> </span>tools::<span class="kw">parse_Rd</span>(fwef)
-testit::<span class="kw">assert</span>(<span class="kw">class</span>(doc) ==<span class="st"> &quot;Rd&quot;</span>)</code></pre></div>
-<p>We can see if there is a tag callde <code>examples</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tags &lt;-<span class="st"> </span>tools:::<span class="kw">RdTags</span>(doc)
-<span class="kw">print</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">examples&quot;</span> %in%<span class="st"> </span>tags)</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p>And we can extract the length of the <code>examples</code> section:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">length</span>(doc[[<span class="kw">which</span>(tags ==<span class="st"> &quot;</span><span class="ch">\\</span><span class="st">examples&quot;</span>)]]))</code></pre></div>
-<pre><code>## [1] 42</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(goodpracticeeighteen)</code></pre></div>
+<p>One file:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;f_with_examples.Rd&quot;</span>)
+testit::<span class="kw">assert</span>(<span class="kw">has_examples_in_rd</span>(filename))
+filename &lt;-<span class="st"> </span><span class="kw">find_path</span>(<span class="st">&quot;f_without_examples.Rd&quot;</span>)
+testit::<span class="kw">assert</span>(!<span class="kw">has_examples_in_rd</span>(filename))</code></pre></div>
+<p>Multiple files:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">find_paths</span>(<span class="kw">c</span>(<span class="st">&quot;f_with_examples.Rd&quot;</span>, <span class="st">&quot;f_without_examples.Rd&quot;</span>))
+testit::<span class="kw">assert</span>(<span class="kw">has_examples_in_rds</span>(filenames) ==<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</code></pre></div>
 
 
 

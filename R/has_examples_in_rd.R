@@ -2,10 +2,11 @@
 #' @param  rd_filename name of an R documentation (.Rd) file. These are located in a package its 'man' folder
 #' @return TRUE or FALSE
 #' @examples
-#'   filename <- paste0(getwd(), "/man/has_examples_in_rd.Rd")
-#'   if (file.exists(filename)) {
-#'     testit::assert(has_examples_in_rd(filename))
-#'   }
+#'   filename <- find_path("f_with_examples.Rd")
+#'   testit::assert(has_examples_in_rd(filename))
+#'   filename <- find_path("f_without_examples.Rd")
+#'   testit::assert(!has_examples_in_rd(filename))
+#'
 #' @export
 #' @author Richel Bilderbeek
 has_examples_in_rd <- function(rd_filename) {
@@ -17,4 +18,29 @@ has_examples_in_rd <- function(rd_filename) {
   tags <- tools:::RdTags(doc)
   has_examples <- "\\examples" %in% tags
   has_examples
+}
+
+
+
+
+#' Checks if an R documentation file supplies one or more examples
+#' @param  rd_filename name of an R documentation (.Rd) file. These are located in a package its 'man' folder
+#' @return a vector of which every element may be TRUE, FALSE or NA
+#' @examples
+#'   filenames <- find_paths(c("f_with_examples.Rd", "f_without_examples.Rd"))
+#'   testit::assert(has_examples_in_rds(filenames) == c(TRUE, FALSE))
+#' @export
+#' @author Richel Bilderbeek
+has_examples_in_rds <- function(rd_filenames) {
+
+  v <- rep(NA, times = length(rd_filenames))
+  i <- 1
+  for (filename in rd_filenames) {
+    tryCatch(
+      v[i] <- has_examples_in_rd(filename),
+      error = function(msg) {}
+    )
+    i <- i + 1
+  }
+  v
 }

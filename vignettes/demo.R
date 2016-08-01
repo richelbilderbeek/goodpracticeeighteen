@@ -1,14 +1,13 @@
 ## ------------------------------------------------------------------------
-# function with examples filename
-fwef <- "~/GitHubs/Cer2016/man/add_alignments.Rd"
-testit::assert(file.exists(fwef))
-doc <- tools::parse_Rd(fwef)
-testit::assert(class(doc) == "Rd")
+library(goodpracticeeighteen)
 
 ## ------------------------------------------------------------------------
-tags <- tools:::RdTags(doc)
-print("\\examples" %in% tags)
+filename <- find_path("f_with_examples.Rd")
+testit::assert(has_examples_in_rd(filename))
+filename <- find_path("f_without_examples.Rd")
+testit::assert(!has_examples_in_rd(filename))
 
 ## ------------------------------------------------------------------------
-print(length(doc[[which(tags == "\\examples")]]))
+filenames <- find_paths(c("f_with_examples.Rd", "f_without_examples.Rd"))
+testit::assert(has_examples_in_rds(filenames) == c(TRUE, FALSE))
 
