@@ -16,7 +16,7 @@ a vector of which every element may be TRUE, FALSE or NA
 Checks if an R documentation file supplies one or more examples
 }
 \examples{
-  filenames <- find_paths(c("f_with_examples.Rd", "f_without_examplecs.Rd"))
+  filenames <- find_paths(c("f_with_examples.Rd", "f_without_examples.Rd"))
   testit::assert(has_examples_in_rds(filenames) == c(TRUE, FALSE))
 }
 \author{
