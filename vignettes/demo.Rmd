@@ -12,8 +12,9 @@ vignette: >
 Here we parse the file:
 
 ```{r}
+library(goodpracticeeighteen)
 # function with examples filename
-fwef <- paste0(getwd(), "/../man/has_examples_in_rd.Rd")
+fwef <- find_path("has_examples_in_rd.Rd")
 testit::assert(file.exists(fwef))
 doc <- tools::parse_Rd(fwef)
 testit::assert(class(doc) == "Rd")

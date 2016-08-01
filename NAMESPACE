@@ -2,4 +2,7 @@
 
 export(f_with_examples)
 export(f_without_examples)
+export(find_beast_jar_path)
+export(find_path)
+export(find_paths)
 export(has_examples_in_rd)
