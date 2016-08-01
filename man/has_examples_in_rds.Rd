@@ -7,7 +7,7 @@
 has_examples_in_rds(rd_filenames)
 }
 \arguments{
-\item{rd_filename}{name of an R documentation (.Rd) file. These are located in a package its 'man' folder}
+\item{rd_filenames}{names of R documentation (.Rd) files. These are commonly located in a package its 'man' folder}
 }
 \value{
 a vector of which every element may be TRUE, FALSE or NA

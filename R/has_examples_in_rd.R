@@ -24,7 +24,7 @@ has_examples_in_rd <- function(rd_filename) {
 
 
 #' Checks if an R documentation file supplies one or more examples
-#' @param  rd_filename name of an R documentation (.Rd) file. These are located in a package its 'man' folder
+#' @param  rd_filenames names of R documentation (.Rd) files. These are commonly located in a package its 'man' folder
 #' @return a vector of which every element may be TRUE, FALSE or NA
 #' @examples
 #'   filenames <- find_paths(c("f_with_examples.Rd", "f_without_examples.Rd"))
