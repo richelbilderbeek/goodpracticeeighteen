@@ -16,6 +16,10 @@ Suggests:
     rmarkdown,
     testit,
     testthat
+Remotes:
+  jimhester/covr,
+  jimhester/lintr,
+  MangoTheCat/goodpractice
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 URL: https://github.com/richelbilderbeek/goodpracticeeighteen
