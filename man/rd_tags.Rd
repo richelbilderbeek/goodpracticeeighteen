@@ -18,7 +18,7 @@ Copy of tools::RdTags. Because tools::RdTags
 is not an exported function, I duplicated its code.
 }
 \examples{
-  filename <- find_path("f_with_examples.Rd")
+  rd_filename <- find_path("f_with_examples.Rd")
   doc <- tools::parse_Rd(rd_filename)
   testit::assert(class(doc) == "Rd")
   tags <- rd_tags(doc)

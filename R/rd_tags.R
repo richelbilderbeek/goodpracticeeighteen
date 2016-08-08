@@ -3,7 +3,7 @@
 #' @param rd a parsed .Rd file, as produced by tools::parse_Rd
 #' @return the tags in the parsed .Rd file
 #' @examples
-#'   filename <- find_path("f_with_examples.Rd")
+#'   rd_filename <- find_path("f_with_examples.Rd")
 #'   doc <- tools::parse_Rd(rd_filename)
 #'   testit::assert(class(doc) == "Rd")
 #'   tags <- rd_tags(doc)
