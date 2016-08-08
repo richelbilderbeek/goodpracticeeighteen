@@ -15,7 +15,7 @@ has_examples_in_rd <- function(rd_filename) {
   }
   doc <- tools::parse_Rd(rd_filename)
   testit::assert(class(doc) == "Rd")
-  tags <- tools:::RdTags(doc)
+  tags <- rd_tags(doc)
   has_examples <- "\\examples" %in% tags
   has_examples
 }
