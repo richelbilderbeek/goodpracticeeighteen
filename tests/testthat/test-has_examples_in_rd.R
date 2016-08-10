@@ -23,7 +23,7 @@ test_that("has_examples_in_rd: detect examples are absent", {
 test_that("has_examples_in_rd: abuse", {
   expect_error(
     has_examples_in_rd("inva.lid"),
-    "has_examples_in_rd: rd_filename does not exist"
+    "rd_filename does not exist"
   )
 })
 

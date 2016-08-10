@@ -16,10 +16,7 @@ find_path <- function(filename) {
     return(full_path)
   }
 
-  stop(
-    "find_path: ",
-    "cannot find '", filename, "'"
-  )
+  stop("cannot find '", filename, "'")
 }
 
 

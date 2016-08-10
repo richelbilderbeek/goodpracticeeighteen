@@ -11,7 +11,7 @@
 #' @author Richel Bilderbeek
 has_examples_in_rd <- function(rd_filename) {
   if (!file.exists(rd_filename)) {
-    stop("has_examples_in_rd: rd_filename does not exist")
+    stop("rd_filename does not exist")
   }
   doc <- tools::parse_Rd(rd_filename)
   testit::assert(class(doc) == "Rd")
