@@ -11,11 +11,11 @@
 #' @author Richel Bilderbeek
 has_examples_in_rd <- function(rd_filename) {
   if (!file.exists(rd_filename)) {
-    stop("has_examples_in_rd: rd_filename does not exist")
+    stop("rd_filename does not exist")
   }
   doc <- tools::parse_Rd(rd_filename)
   testit::assert(class(doc) == "Rd")
-  tags <- rd_tags(doc)
+  tags <- goodpracticeeighteen::rd_tags(doc)
   has_examples <- "\\examples" %in% tags
   has_examples
 }
@@ -38,7 +38,9 @@ has_examples_in_rds <- function(rd_filenames) {
   for (filename in rd_filenames) {
     tryCatch(
       v[i] <- has_examples_in_rd(filename),
-      error = function(msg) {}
+      error = function(msg) {
+        # Nothing
+      }
     )
     i <- i + 1
   }

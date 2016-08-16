@@ -10,9 +10,8 @@
 #'   testit::assert("\\examples" %in% tags)
 #' @export
 #' @author Richel Bilderbeek
-rd_tags <- function(rd)
-{
-  res <- sapply(rd, attr, "Rd_tag")
+rd_tags <- function(rd) {
+  res <- vapply(rd, attr, "Rd_tag", FUN.VALUE = "string")
   if (!length(res))
     res <- character()
   res

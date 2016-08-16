@@ -23,11 +23,8 @@ find_path <- function(filename) {
     return(full_path)
   }
 
-  stop(
+  stop("cannot find '", filename, "'")
 >>>>>>> b87369c1499112dfe4116f302ce8e7fefed32f83
-    "find_path: ",
-    "cannot find '", filename, "'"
-  )
   full_path_filename
 }
 
@@ -44,6 +41,12 @@ find_path <- function(filename) {
 #' @author Richel Bilderbeek
 #' @export
 find_paths <- function(filenames) {
-  filenames <- as.vector(sapply(filenames, goodpracticeeighteen::find_path)) # nolint Why doesn't this work?
+  filenames <- as.vector(
+    vapply(
+      filenames,
+      goodpracticeeighteen::find_path,
+      FUN.VALUE = "string"
+    )
+  )
   filenames
 }
