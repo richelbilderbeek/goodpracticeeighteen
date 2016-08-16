@@ -7,11 +7,24 @@
 #' @author Richel Bilderbeek
 #' @export
 find_path <- function(filename) {
+<<<<<<< HEAD
   full_path_filename <- system.file(
     "inst/extdata", filename, package = "goodpracticeeighteen"
   )
   if (!file.exists(full_path_filename)) {}
     stop(
+=======
+
+  full_path <- system.file(
+     "extdata", filename, package = "goodpracticeeighteen"
+   )
+
+  if (file.exists(full_path)) {
+    return(full_path)
+  }
+
+  stop(
+>>>>>>> b87369c1499112dfe4116f302ce8e7fefed32f83
     "find_path: ",
     "cannot find '", filename, "'"
   )
