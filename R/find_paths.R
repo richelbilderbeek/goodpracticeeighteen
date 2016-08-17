@@ -8,7 +8,7 @@
 #' @export
 find_path <- function(filename) {
   full_path_filename <- system.file(
-    "inst/extdata", filename, package = "goodpracticeeighteen"
+    "extdata", filename, package = "goodpracticeeighteen"
   )
   if (!file.exists(full_path_filename)) {
     stop("cannot find '", filename, "'")
